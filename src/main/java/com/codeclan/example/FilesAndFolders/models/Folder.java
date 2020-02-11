@@ -1,5 +1,7 @@
 package com.codeclan.example.FilesAndFolders.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +13,7 @@ public class Folder {
     @Column(name = "title")
     private String title;
 
+    @JsonBackReference
     @OneToMany(mappedBy = "folder")
     private List<File> files;
 
@@ -48,5 +51,9 @@ public class Folder {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public void addFile(File file){
+        this.files.add(file);
     }
 }
