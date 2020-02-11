@@ -11,7 +11,7 @@ public class Folder {
     @Column(name = "title")
     private String title;
 
-    @Column(name = "files")
+    @OneToMany(mappedBy = "folder")
     private List<File> files;
 
     @Id
